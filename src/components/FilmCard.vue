@@ -16,8 +16,8 @@ onMounted(fetchFilms)
 
 <template>
   <div>
-    <h1 class="pl-16 font-bold text-4xl">Les films du moment</h1>
-    <div class="grid grid-cols-2 gap-10 px-5">
+    <h1 class="font-bold text-xl mb-5">Les films du moment</h1>
+    <div class="grid grid-cols-2 gap-10">
         <div v-for="film in films" :key="film.id" class="grid justify-center text-center">
           <RouterLink :to="`/films/${film.id}`">
             <img
@@ -25,7 +25,7 @@ onMounted(fetchFilms)
               alt="Affiche du film"
               class="max-h-70 max-w-90 object-cover"
             />
-            <h2 class="font-semibold text-lg mt-2">{{ film.titre_film }}</h2>
+            <h2 class="font-semibold text-lg mt-1">{{ film.titre_film }}</h2>
           </RouterLink>
         </div>
     </div>

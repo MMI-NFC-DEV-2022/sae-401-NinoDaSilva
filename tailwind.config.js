@@ -17,6 +17,7 @@ export default {
        "xl": "1.5rem", // 24px
        "2xl": "1.5625rem", // 25px
        "3xl": "1.875rem", // 30px
+        "4xl": "2.5rem", // 40px
       },
       fontFamily: {
        spline: ["Spline Sans", "sans-serif"],
