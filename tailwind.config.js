@@ -7,7 +7,7 @@ export default {
   theme: {
       colors: {
        "noir": "#0e0e0e",
-       "blanc": "#fafafa",
+       "blanc": "#ffffff",
        "orange": "#f5c754",
       },
       fontSize: {
