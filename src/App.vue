@@ -6,15 +6,11 @@ import FooterPage from './components/FooterPage.vue';
 </script>
 
 <template>
-  <header>
-    <HeaderPage />
-  </header>
+  <HeaderPage />
 
   <Suspense>
     <RouterView />
   </Suspense>
 
-  <footer>
-    <FooterPage />
-  </footer>
+  <FooterPage />
 </template>
