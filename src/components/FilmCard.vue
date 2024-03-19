@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
-const films = ref([])
-
 import { supabase } from '@/supabase'
+
+const films = ref()
 
 const fetchFilms = async () => {
   let { data: filmsData, error } = await supabase.from('film').select('*')
