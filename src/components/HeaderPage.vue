@@ -25,15 +25,15 @@ watch(y, (y, oldY) => {
       '!-translate-y-full !bg-transparent': !dirTop,
       '!bg-white': underLimit
     }"
-    class="bg-blanc fixed z-50 flex w-full translate-y-0 items-center justify-between px-6 py-2 mt-2 transition-all duration-300 ease-in-out text-sm xl:text-lg"
+    class="bg-blanc fixed z-50 flex w-full translate-y-0 items-center justify-between px-6 py-2 transition-all duration-300 ease-in-out text-sm xl:text-lg"
   >
-    <div>
+    <!-- <div>
       <RouterLink
         to="/connexion"
         @click="closeMenu"
         ><icon_user class="w-8 h-8"/>
       </RouterLink>
-    </div>
+    </div> -->
   
     <div class="">
       <RouterLink to="/">
@@ -55,8 +55,8 @@ watch(y, (y, oldY) => {
       ></div>
     </button>
 
-    <nav class="invisible opacity-0 fixed inset-0 h-screen w-screen text-center transition-all duration-300 ease-in-out lg:visible lg:relative lg:flex lg:h-auto lg:items-center lg:tracking-wide lg:opacity-100 lg:bg-blanc lg:bg-opacity-0"
-      :class="{ '!visible opacity-100': menuIsOpen }"
+    <nav class="invisible opacity-0 fixed inset-0 h-screen w-screen text-center transition-all duration-300 ease-in-out lg:visible lg:relative lg:flex lg:h-auto lg:items-center lg:tracking-wide lg:opacity-100 lg:bg-blanc"
+      :class="{ '!visible opacity-100 bg-blanc mt-[15%]': menuIsOpen }"
     >
       <ul class="font-semibold mt-[16vh] max-sm:space-y-7 text-xl lg:m-0 lg:flex">
         <li>
@@ -65,12 +65,12 @@ watch(y, (y, oldY) => {
         <li>
           <RouterLink class="menu-link" to="/films" @click="closeMenu">Films</RouterLink>
         </li>
-        <li>
+        <!-- <li>
           <RouterLink class="menu-link" to="/collections" @click="closeMenu">Collections</RouterLink>
         </li>
         <li>
           <RouterLink class="menu-link" to="/celebrites" @click="closeMenu">Célébrités</RouterLink>
-        </li>
+        </li> -->
       </ul>
     </nav>
 
