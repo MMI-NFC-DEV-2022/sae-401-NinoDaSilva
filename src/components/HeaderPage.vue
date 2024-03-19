@@ -27,13 +27,13 @@ watch(y, (y, oldY) => {
     }"
     class="bg-blanc fixed z-50 flex w-full translate-y-0 items-center justify-between px-6 py-2 transition-all duration-300 ease-in-out text-sm xl:text-lg"
   >
-    <!-- <div>
+    <div>
       <RouterLink
         to="/connexion"
         @click="closeMenu"
         ><icon_user class="w-8 h-8"/>
       </RouterLink>
-    </div> -->
+    </div>
   
     <div class="">
       <RouterLink to="/">

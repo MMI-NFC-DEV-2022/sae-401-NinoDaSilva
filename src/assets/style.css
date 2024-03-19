@@ -5,3 +5,15 @@
 body {
     font-family: 'Spline Sans', sans-serif;
 }
+
+@layer components {
+    .link {
+      @apply hover:text-orange duration-200;
+    }
+    .form-label--home {
+      @apply sm:text-sm font-bold;
+    }
+    .form-champ {
+      @apply duration-150 bg-transparent border-2 rounded-xl w-full py-2.5 px-6 max-sm:leading-tight focus:outline-orange focus:scale-[1.01] mt-1;
+    }
+  }

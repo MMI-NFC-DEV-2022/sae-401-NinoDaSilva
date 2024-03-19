@@ -9,6 +9,7 @@ export default {
        "noir": "#0e0e0e",
        "blanc": "#ffffff",
        "orange": "#f5c754",
+       "transparent": "transparent",
       },
       fontSize: {
        "sm": "0.8125rem", // 13px
