@@ -8,9 +8,11 @@ import FooterPage from './components/FooterPage.vue';
 <template>
   <HeaderPage />
 
-  <Suspense>
-    <RouterView />
-  </Suspense>
+  <div class="pt-24">
+    <Suspense>
+      <RouterView />
+    </Suspense>
+  </div>
 
   <FooterPage />
 </template>

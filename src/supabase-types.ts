@@ -26,6 +26,7 @@ export type Database = {
       }
       film: {
         Row: {
+          affiche_film: string | null
           budget_film: number | null
           created_at: string
           date_sortie: string | null
@@ -36,6 +37,7 @@ export type Database = {
           trailer: string | null
         }
         Insert: {
+          affiche_film?: string | null
           budget_film?: number | null
           created_at?: string
           date_sortie?: string | null
@@ -46,6 +48,7 @@ export type Database = {
           trailer?: string | null
         }
         Update: {
+          affiche_film?: string | null
           budget_film?: number | null
           created_at?: string
           date_sortie?: string | null
