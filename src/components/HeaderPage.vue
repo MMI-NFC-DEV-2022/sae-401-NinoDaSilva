@@ -3,6 +3,8 @@ import { RouterLink } from 'vue-router'
 import { ref, computed, watch } from 'vue'
 import { useWindowScroll } from '@vueuse/core'
 
+import icon_user from '@/components/icons/icon_user.vue'
+
 const menuIsOpen = ref(false)
 function closeMenu() {
   menuIsOpen.value = false
@@ -23,83 +25,63 @@ watch(y, (y, oldY) => {
       '!-translate-y-full !bg-transparent': !dirTop,
       '!bg-white': underLimit
     }"
-    class="bg-blanc bg-opacity-80 fixed z-50 flex w-full translate-y-0 items-center justify-between px-6 py-2 transition-all duration-300 ease-in-out text-sm xl:text-lg"
+    class="bg-blanc fixed z-50 flex w-full translate-y-0 items-center justify-between px-6 py-2 mt-2 transition-all duration-300 ease-in-out text-sm xl:text-lg"
   >
-    <div class="mr-8">
-      <a href="/">
-        <GoutLocalLogo class="w-[54px] h-[54px] sm:w-[75px] sm:h-[75px]" />
-      </a>
+    <div>
+      <RouterLink
+        to="/connexion"
+        @click="closeMenu"
+        ><icon_user class="w-8 h-8"/>
+      </RouterLink>
+    </div>
+  
+    <div class="">
+      <RouterLink to="/">
+        <img src="/nema_logo.png" alt="logo" class="w-8">
+      </RouterLink>
     </div>
 
-    <button
-      class="relative z-10 flex h-5 w-8 flex-col justify-between lg:hidden mt-[0.8vh]"
+    <button class="relative z-10 flex h-5 w-8 flex-col justify-between lg:hidden"
       @click="menuIsOpen = !menuIsOpen"
     >
-      <div
-        class="ease h-[2px] w-full transform rounded-full bg-noir transition duration-300"
-        :class="{ 'translate-y-[9px] rotate-45 bg-blanc': menuIsOpen,
-                '!bg-noir': underLimit}"
+      <div class="ease h-[2px] w-full transform rounded-full bg-noir transition duration-300"
+        :class="{ 'translate-y-[9px] rotate-45': menuIsOpen, '!bg-noir': underLimit }"
       ></div>
-      <div
-        class="ease h-[2px] w-full transform rounded-full bg-noir transition duration-300"
-        :class="{ 'opacity-0': menuIsOpen,
-                '!bg-noir': underLimit }"
+      <div class="ease h-[2px] w-full transform rounded-full bg-noir transition duration-300"
+        :class="{ 'opacity-0': menuIsOpen, '!bg-noir': underLimit }"
       ></div>
-      <div
-        class="ease h-[2px] w-full transform rounded-full bg-noir transition duration-300"
-        :class="{ '-translate-y-[9px] -rotate-45 bg-blanc': menuIsOpen,
-                '!bg-noir': underLimit }"
+      <div class="ease h-[2px] w-full transform rounded-full bg-noir transition duration-300"
+        :class="{ '-translate-y-[9px] -rotate-45': menuIsOpen, '!bg-noir': underLimit }"
       ></div>
     </button>
 
-    <nav
-      class="bg-brun invisible opacity-0 fixed inset-0 h-screen w-screen text-center transition-all duration-300 ease-in-out lg:visible lg:relative lg:flex lg:h-auto lg:items-center lg:tracking-wide lg:opacity-100 lg:bg-blanc lg:bg-opacity-0"
+    <nav class="invisible opacity-0 fixed inset-0 h-screen w-screen text-center transition-all duration-300 ease-in-out lg:visible lg:relative lg:flex lg:h-auto lg:items-center lg:tracking-wide lg:opacity-100 lg:bg-blanc lg:bg-opacity-0"
       :class="{ '!visible opacity-100': menuIsOpen }"
     >
-      <ul
-        class="font-primary font-semibold mt-[16vh] lg:m-0 lg:flex"
-        :class="{ 'text-blanc': menuIsOpen }"
-      >
+      <ul class="font-semibold mt-[16vh] max-sm:space-y-7 text-xl lg:m-0 lg:flex">
         <li>
-          <RouterLink class="menu-link" to="/produits" @click="closeMenu"
-            >Nos produits</RouterLink
-          >
+          <RouterLink class="menu-link" to="/" @click="closeMenu">Accueil</RouterLink>
         </li>
         <li>
-          <RouterLink class="menu-link" to="/recettes" @click="closeMenu"
-            >Nos recettes</RouterLink
-          >
+          <RouterLink class="menu-link" to="/films" @click="closeMenu">Films</RouterLink>
         </li>
         <li>
-          <RouterLink class="menu-link" to="/conseils" @click="closeMenu"
-            >Nos conseils</RouterLink
-          >
+          <RouterLink class="menu-link" to="/collections" @click="closeMenu">Collections</RouterLink>
         </li>
         <li>
-          <RouterLink class="menu-link" to="/events" @click="closeMenu"
-            >Événements</RouterLink
-          >
-        </li>
-        <li>
-          <RouterLink class="menu-link" to="/partenaires" @click="closeMenu"
-            >Nos partenaires</RouterLink
-          >
+          <RouterLink class="menu-link" to="/celebrites" @click="closeMenu">Célébrités</RouterLink>
         </li>
       </ul>
     </nav>
 
-    <div
-      class="font-primary font-semibold invisible opacity-0 fixed inset-0 text-center transition-all duration-300 ease-in-out lg:visible lg:relative lg:flex lg:h-auto lg:items-center lg:tracking-wide lg:opacity-100 lg:justify-end"
-      :class="{ '!visible opacity-100 text-blanc': menuIsOpen }"
-    >
-      <RouterLink
-        class="menu-link max-sm:pt-0 max-lg:mt-[2.8vh] max-lg:ml-3"
-        to="/panier"
-        @click="closeMenu"
-        ><PanierIcon
-      /></RouterLink>
-
-      <RouterLink class="menu-link" to="/connexion" @click="closeMenu">Connexion</RouterLink>
-    </div>
   </header>
 </template>
+
+<style scoped>
+.menu-link {
+  transition: all 0.3s;
+}
+.menu-link:hover {
+  color: #f2c94c;
+}
+</style>
