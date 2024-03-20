@@ -18,7 +18,3 @@ if (error) {
 
   </div>
 </template>
-
-<style scoped>
-
-</style>

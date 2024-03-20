@@ -65,9 +65,9 @@ watch(y, (y, oldY) => {
         <li>
           <RouterLink class="menu-link" to="/films" @click="closeMenu">Films</RouterLink>
         </li>
-        <!-- <li>
+        <li>
           <RouterLink class="menu-link" to="/collections" @click="closeMenu">Collections</RouterLink>
-        </li> -->
+        </li>
         <li>
           <RouterLink class="menu-link" to="/celebrites" @click="closeMenu">Célébrités</RouterLink>
         </li>
