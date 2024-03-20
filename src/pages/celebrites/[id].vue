@@ -15,6 +15,6 @@ if (error) {
 <template>
   <div>
     <h2 class="font-semibold text-2xl sm:text-4xl">{{ personneData.nom_personne }}</h2>
-
+    <img :src="personneData.photo_personne" alt="Photo" class="rounded-lg">
   </div>
 </template>
