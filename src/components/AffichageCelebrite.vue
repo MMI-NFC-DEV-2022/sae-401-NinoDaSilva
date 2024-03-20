@@ -10,10 +10,11 @@ const { data:filmPersonne } = await supabase.from('personne_film').select('*, pe
 
 <template>
     <div class="mt-10">
-        <h2 class="text-xl mb-4">Casting</h2>
+        <h2 class="text-3xl mb-4 font-semibold">Casting</h2>
         <div v-for="unePersonne in filmPersonne">
             <RouterLink :to="`/celebrites/${unePersonne.personne.id}`">
                 <div class="text-md">{{ unePersonne.personne.nom_personne }}</div>
+                <img :src="unePersonne.personne.photo_personne" alt="Photo" class="w-32">
                 <div class="opacity-80">{{ unePersonne.role }}</div>
             </RouterLink>
         </div>
