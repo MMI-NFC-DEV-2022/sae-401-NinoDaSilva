@@ -6,6 +6,8 @@ import { supabase } from '@/supabase'
 import clock from '@/components/icons/clock.vue';
 
 const route = useRoute()
+
+// Import data from film
 const filmId = route.params.id
 
 const { data:filmData, error } = await supabase.from('film').select('*').eq('id', filmId).single()
@@ -13,6 +15,18 @@ const { data:filmData, error } = await supabase.from('film').select('*').eq('id'
 if (error) {
   console.error('Erreur lors du chargement des données :', error)
 }
+// Import data from personne_film
+const { data:filmPersonne } = await supabase.from('personne_film').select('*, personne(*)').eq('film', route.params.id)
+
+// Import data from plateforme_film
+const { data:filmPlateforme } = await supabase.from('plateforme_film').select('*, plateform(*)').eq('film', route.params.id)
+
+// Import data from film_collection
+const { data:collectionFilm } = await supabase.from('film_collection').select('*, collection(*)').eq('film', route.params.id)
+
+// Import data from film_genre
+const { data:genreFilm } = await supabase.from('film_genre').select('*, genre(*)').eq('film', route.params.id)
+
 </script>
 
 <template>
@@ -30,10 +44,22 @@ if (error) {
       <img class="max-sm:mt-4 md:w-1/2 md:max-w-[50vh]" :src="filmData.affiche_film" alt="Film affiche image" />
     </div>
 
-    <div>
+    <!-- <div>
       <h2>Où regarder</h2>
-      <div>
-        <img src="" alt="Logo plateforme">
+      <div v-for="unePlateforme in filmPlateforme">
+        <RouterLink :to="`/plateformes/${unePlateforme.id}`">
+          <img :src="logo_plateforme" alt="Logo plateforme">
+        </RouterLink>
+      </div>
+    </div> -->
+
+    <div class="mt-10">
+      <h2>Casting</h2>
+      <div v-for="unePersonne in filmPersonne">
+        <RouterLink :to="`/celebrites/${unePersonne.id}`">
+          <span>{{ unePersonne.personne.nom_personne }}</span>
+          <span>{{ unePersonne.role }}</span>
+        </RouterLink>
       </div>
     </div>
 

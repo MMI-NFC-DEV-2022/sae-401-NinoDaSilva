@@ -171,6 +171,96 @@ export type Database = {
         }
         Relationships: []
       }
+      personne_film: {
+        Row: {
+          film: number | null
+          id: number
+          nom_personnage: string | null
+          personne: number | null
+          role: string | null
+        }
+        Insert: {
+          film?: number | null
+          id?: number
+          nom_personnage?: string | null
+          personne?: number | null
+          role?: string | null
+        }
+        Update: {
+          film?: number | null
+          id?: number
+          nom_personnage?: string | null
+          personne?: number | null
+          role?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "public_acteur_film_acteur_fkey"
+            columns: ["personne"]
+            isOneToOne: false
+            referencedRelation: "personne"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "public_acteur_film_film_fkey"
+            columns: ["film"]
+            isOneToOne: false
+            referencedRelation: "film"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      plateforme: {
+        Row: {
+          id: number
+          logo_plateforme: string | null
+          nom_plateforme: string | null
+        }
+        Insert: {
+          id?: number
+          logo_plateforme?: string | null
+          nom_plateforme?: string | null
+        }
+        Update: {
+          id?: number
+          logo_plateforme?: string | null
+          nom_plateforme?: string | null
+        }
+        Relationships: []
+      }
+      plateforme_film: {
+        Row: {
+          film: number | null
+          id: number
+          plateforme: number | null
+        }
+        Insert: {
+          film?: number | null
+          id?: number
+          plateforme?: number | null
+        }
+        Update: {
+          film?: number | null
+          id?: number
+          plateforme?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "public_plateforme_film_film_fkey"
+            columns: ["film"]
+            isOneToOne: false
+            referencedRelation: "film"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "public_plateforme_film_plateforme_fkey"
+            columns: ["plateforme"]
+            isOneToOne: false
+            referencedRelation: "plateforme"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
