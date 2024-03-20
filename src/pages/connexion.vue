@@ -3,6 +3,8 @@ import { ref } from 'vue'
 import { supabase, user } from '@/supabase'
 import { useRouter } from 'vue-router'
 
+import BtnComponent from '@/components/BtnComponent.vue';
+
 const router = useRouter()
 const loginMode = ref(true)
 
@@ -18,6 +20,7 @@ const doLogin = async () => {
     })
     router.push('/portail')
   } catch (error) {
+    alert('Une erreur est survenue lors de la connexion, vérifiez vos identifiants et réessayez.')
     console.log(error)
   }
 }
@@ -29,20 +32,20 @@ const doCreateAccount = async () => {
       password: password.value
     })
     alert('Votre compte a été créé avec succès !')
-      router.push('/portail')
+    router.push('/portail')
   } catch (error) {
     console.log(error)
   }
 }
 
 // Redirige l'utilisateur vers le portail client si il est connecté
-if (user) {
+if (user.value) {
     router.push('/portail')
 }
 </script>
 
 <template>
-  <form class="max-w-md md:max-w-xl mx-auto px-8 pt-6 mb-10 mt-4 sm:mt-8">
+  <form @submit.prevent="loginMode ? doLogin() : doCreateAccount()" class="max-w-md md:max-w-xl mx-auto px-8 pt-6 mb-10 mt-4 sm:mt-8">
     <div>
       <h2 class="text-center text-xl mb-10 uppercase">{{ loginMode ? 'CONNEXION' : 'INSCRIPTION' }}</h2>
       <div class="sm:col-span-2 sm:col-start-1 mt-4">
@@ -62,10 +65,8 @@ if (user) {
       <!-- Se connecter -->
       <div v-if="loginMode">
         <div class="text-center mt-6">
-          <button type="submit" @click="doLogin"
-            class="py-2 px-10 sm:px-16 rounded-full shadow-md hover:scale-[1.02] duration-300">
-            Se connecter
-          </button>
+
+          <BtnComponent buttonText="Se connecter" stateToggle="doLogin" />
 
           <div class="text-center mt-6">
             <p class="mb-2 sm:mb-1">Vous n'avez pas de compte ?</p>
@@ -83,12 +84,7 @@ if (user) {
           </label>
         </div>
 
-        <div class="text-center mt-5 sm:mt-8">
-          <button type="submit" @click="doCreateAccount"
-            class="py-2 px-10 sm:px-16 rounded-full shadow-md hover:scale-[1.02] duration-300">
-            S'inscrire
-          </button>
-        </div>
+        <BtnComponent buttonText="S'inscrire" stateToggle="doCreateAccount" />
 
         <div class="text-center mt-6">
           <p class="mb-2 sm:mb-1">Vous avez déjà un compte ?</p>

@@ -14,7 +14,7 @@ const doLogout = async () => {
 
 // Redirige l'utilisateur vers la page de connexion si il n'est pas connecté
 const router = useRouter()
-if (!user) {
+if (!user.value) {
     router.push('/connexion')
 }
 </script>
