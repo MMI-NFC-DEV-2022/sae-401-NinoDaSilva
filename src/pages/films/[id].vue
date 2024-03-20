@@ -8,20 +8,14 @@ import AffichageCelebrite from '@/components/AffichageCelebrite.vue';
 const route = useRoute()
 
 // Import data from film
-const { data:filmData, error } = await supabase.from('film').select('*').eq('id', route.params.id).single()
+const { data:filmData, error } = await supabase.from('film')
+  .select('*, plateforme_film(*, plateforme(*))')
+  .eq('id', route.params.id)
+  .single()
 
 if (error) {
   console.error('Erreur lors du chargement des données :', error)
 }
-
-// Import data from plateforme_film
-const { data:filmPlateforme } = await supabase.from('plateforme_film').select('*, plateforme(*)').eq('film', route.params.id)
-
-// // Import data from film_collection
-// const { data:collectionFilm } = await supabase.from('film_collection').select('*, collection(*)').eq('film', route.params.id)
-
-// // Import data from film_genre
-// const { data:genreFilm } = await supabase.from('film_genre').select('*, genre(*)').eq('film', route.params.id)
 </script>
 
 <template>
@@ -42,7 +36,7 @@ const { data:filmPlateforme } = await supabase.from('plateforme_film').select('*
     <div>
       <h2>Où regarder</h2>
       <div class="flex gap-2">
-        <div v-for="unePlateforme in filmPlateforme">
+        <div v-for="unePlateforme in filmData.plateforme_film">
           <a :href="`${unePlateforme.lien_plateforme}`">
             <img :src="unePlateforme.plateforme.logo_plateforme" class="rounded-[20%] w-16" alt="Logo plateforme">
           </a>
