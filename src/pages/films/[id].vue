@@ -43,9 +43,9 @@ const { data:filmPlateforme } = await supabase.from('plateforme_film').select('*
       <h2>Où regarder</h2>
       <div class="flex gap-2">
         <div v-for="unePlateforme in filmPlateforme">
-          <RouterLink :to="`/plateformes/${unePlateforme.id}`">
+          <a :href="`${unePlateforme.lien_plateforme}`">
             <img :src="unePlateforme.plateforme.logo_plateforme" class="rounded-[20%] w-16" alt="Logo plateforme">
-          </RouterLink>
+          </a>
         </div>
       </div>
     </div>
