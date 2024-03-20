@@ -14,13 +14,8 @@ if (error) {
   console.error('Erreur lors du chargement des données :', error)
 }
 
-
-// import { useRouter } from 'vue-router'
-
-// const route = useRoute()
-
-// // Import data from plateforme_film
-// const { data:filmPlateforme } = await supabase.from('plateforme_film').select('*, plateform(*)').eq('film', route.params.id)
+// Import data from plateforme_film
+const { data:filmPlateforme } = await supabase.from('plateforme_film').select('*, plateforme(*)').eq('film', route.params.id)
 
 // // Import data from film_collection
 // const { data:collectionFilm } = await supabase.from('film_collection').select('*, collection(*)').eq('film', route.params.id)
@@ -44,14 +39,16 @@ if (error) {
       <img class="max-sm:mt-4 md:w-1/2 md:max-w-[50vh]" :src="filmData.affiche_film" alt="Film affiche image" />
     </div>
 
-    <!-- <div>
+    <div>
       <h2>Où regarder</h2>
-      <div v-for="unePlateforme in filmPlateforme">
-        <RouterLink :to="`/plateformes/${unePlateforme.id}`">
-          <img :src="logo_plateforme" alt="Logo plateforme">
-        </RouterLink>
+      <div class="flex gap-2">
+        <div v-for="unePlateforme in filmPlateforme">
+          <RouterLink :to="`/plateformes/${unePlateforme.id}`">
+            <img :src="unePlateforme.plateforme.logo_plateforme" class="rounded-[20%] w-16" alt="Logo plateforme">
+          </RouterLink>
+        </div>
       </div>
-    </div> -->
+    </div>
 
     <AffichageCelebrite />
 
