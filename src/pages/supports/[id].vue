@@ -3,9 +3,9 @@ import { useRoute } from 'vue-router'
 import { supabase } from '@/supabase'
 
 const route = useRoute()
-const plateformeId = route.params.id
+const supportId = route.params.id
 
-const { data:plateformeData, error } = await supabase.from('plateforme').select('*').eq('id', plateformeId).single()
+const { data:supportData, error } = await supabase.from('support').select('*').eq('id', supportId).single()
 
 if (error) {
   console.error('Erreur lors du chargement des données :', error)
@@ -14,7 +14,7 @@ if (error) {
 
 <template>
   <div>
-    <h2 class="font-semibold text-2xl sm:text-4xl">{{ plateformeData.nom_plateforme }}</h2>
+    <h2 class="font-semibold text-2xl sm:text-4xl">{{ supportData.nom_support }}</h2>
 
   </div>
 </template>
