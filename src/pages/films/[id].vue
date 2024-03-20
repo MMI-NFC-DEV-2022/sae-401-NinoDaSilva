@@ -1,32 +1,32 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { supabase } from '@/supabase'
 
 import clock from '@/components/icons/clock.vue';
+import AffichageCelebrite from '@/components/AffichageCelebrite.vue';
 
 const route = useRoute()
 
 // Import data from film
-const filmId = route.params.id
-
-const { data:filmData, error } = await supabase.from('film').select('*').eq('id', filmId).single()
+const { data:filmData, error } = await supabase.from('film').select('*').eq('id', route.params.id).single()
 
 if (error) {
   console.error('Erreur lors du chargement des données :', error)
 }
-// Import data from personne_film
-const { data:filmPersonne } = await supabase.from('personne_film').select('*, personne(*)').eq('film', route.params.id)
 
-// Import data from plateforme_film
-const { data:filmPlateforme } = await supabase.from('plateforme_film').select('*, plateform(*)').eq('film', route.params.id)
 
-// Import data from film_collection
-const { data:collectionFilm } = await supabase.from('film_collection').select('*, collection(*)').eq('film', route.params.id)
+// import { useRouter } from 'vue-router'
 
-// Import data from film_genre
-const { data:genreFilm } = await supabase.from('film_genre').select('*, genre(*)').eq('film', route.params.id)
+// const route = useRoute()
 
+// // Import data from plateforme_film
+// const { data:filmPlateforme } = await supabase.from('plateforme_film').select('*, plateform(*)').eq('film', route.params.id)
+
+// // Import data from film_collection
+// const { data:collectionFilm } = await supabase.from('film_collection').select('*, collection(*)').eq('film', route.params.id)
+
+// // Import data from film_genre
+// const { data:genreFilm } = await supabase.from('film_genre').select('*, genre(*)').eq('film', route.params.id)
 </script>
 
 <template>
@@ -53,15 +53,7 @@ const { data:genreFilm } = await supabase.from('film_genre').select('*, genre(*)
       </div>
     </div> -->
 
-    <div class="mt-10">
-      <h2>Casting</h2>
-      <div v-for="unePersonne in filmPersonne">
-        <RouterLink :to="`/celebrites/${unePersonne.id}`">
-          <span>{{ unePersonne.personne.nom_personne }}</span>
-          <span>{{ unePersonne.role }}</span>
-        </RouterLink>
-      </div>
-    </div>
+    <AffichageCelebrite />
 
   </div>
 </template>
