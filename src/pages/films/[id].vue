@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { supabase } from '@/supabase'
 
 import clock from '@/components/icons/clock.vue';
 import AffichageCelebrite from '@/components/AffichageCelebrite.vue';
 
 const route = useRoute()
+const router = useRouter()
 
 // Import data from film
 const { data:filmData, error } = await supabase.from('film')
-  .select('*, plateforme_film(*, plateforme(*))')
+  .select('*, plateforme_film(*, plateforme(*)), support_film(*)')
   .eq('id', route.params.id)
   .single()
 
@@ -42,6 +43,19 @@ if (error) {
           </a>
         </div>
       </div>
+    </div>
+
+    <div>
+      <h2>Support</h2>
+      <div class="flex col-span-2 gap-5">
+        <div v-for="(unSupport, index) in filmData.support_film.slice(0, 2)">
+          <RouterLink :to="`/supports/${unSupport.id}`">
+            <img :src="unSupport.image_support" class="" alt="Logo plateforme">
+            <div class="mt-2 text-center text-md">{{ unSupport.nom_support }}</div>
+          </RouterLink>
+        </div>
+      </div>
+      <button @click="router.push({ name: '/supports/tousSupport/:id', params: { id: route.params.id } })" class="bouton-main mt-5">Voir toutes les versions</button>
     </div>
 
     <AffichageCelebrite />
