@@ -34,8 +34,8 @@ if (error) {
       <img class="max-sm:mt-4 md:w-1/2 md:max-w-[50vh]" :src="filmData.affiche_film" alt="Film affiche image" />
     </div>
 
-    <div>
-      <h2>Où regarder</h2>
+    <div class="mt-10">
+      <h2 class="text-2xl font-semibold">Où regarder</h2>
       <div class="flex gap-2">
         <div v-for="unePlateforme in filmData.plateforme_film">
           <a :href="`${unePlateforme.lien_plateforme}`">
@@ -45,17 +45,19 @@ if (error) {
       </div>
     </div>
 
-    <div>
-      <h2>Support</h2>
-      <div class="flex col-span-2 gap-5">
-        <div v-for="(unSupport, index) in filmData.support_film.slice(0, 2)">
-          <RouterLink :to="`/supports/${unSupport.id}`">
-            <img :src="unSupport.image_support" class="" alt="Logo plateforme">
-            <div class="mt-2 text-center text-md">{{ unSupport.nom_support }}</div>
-          </RouterLink>
+    <div class="bg-noir py-8 -mx-5 mt-10">
+      <div class="mx-5 text-blanc">
+        <h2 class="text-2xl font-semibold">Supports</h2>
+        <div class="flex col-span-2 gap-5 mt-5">
+          <div v-for="(unSupport, index) in filmData.support_film.slice(0, 2)">
+            <RouterLink :to="`/supports/${unSupport.id}`">
+              <img :src="unSupport.image_support" class="" alt="Logo plateforme">
+              <div class="mt-2 text-center text-md">{{ unSupport.nom_support }}</div>
+            </RouterLink>
+          </div>
         </div>
+        <button @click="router.push({ name: '/supports/tousSupport/:id', params: { id: route.params.id } })" class="bouton-main mt-8 mb-2 text-noir">Voir toutes les versions</button>
       </div>
-      <button @click="router.push({ name: '/supports/tousSupport/:id', params: { id: route.params.id } })" class="bouton-main mt-5">Voir toutes les versions</button>
     </div>
 
     <AffichageCelebrite />

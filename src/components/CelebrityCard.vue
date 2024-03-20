@@ -6,7 +6,7 @@ import { supabase } from '@/supabase'
 const personnes = ref()
 
 const fetchFilms = async () => {
-  let { data: personneData, error } = await supabase.from('personne').select('*')
+  let { data: personneData } = await supabase.from('personne').select('*')
 
   personnes.value = personneData
 }
@@ -20,6 +20,7 @@ onMounted(fetchFilms)
     <div class="grid grid-cols-2 gap-10">
         <div v-for="personne in personnes" :key="personne.id" class="grid justify-center text-center">
           <RouterLink :to="`/celebrites/${personne.id}`">
+            <img :src="personne.photo_personne" alt="Photo" class="rounded-md">
             <h2 class="font-semibold text-lg mt-1">{{ personne.nom_personne }}</h2>
           </RouterLink>
         </div>
