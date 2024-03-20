@@ -6,6 +6,10 @@ body {
     font-family: 'Spline Sans', sans-serif;
 }
 
+img {
+    max-width: 100%;
+}
+
 @layer components {
     .link {
       @apply hover:text-orange duration-200;
