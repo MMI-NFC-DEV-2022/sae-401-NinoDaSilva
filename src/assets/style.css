@@ -20,3 +20,40 @@ body {
       @apply bg-orange rounded-xl p-2 px-5 w-full text-md font-semibold duration-300 shadow-sm hover:shadow-md hover:scale-105 hover:bg-opacity-10 border-2 border-orange
     }
   }
+
+  /* Carousel */
+  .carousel {
+    width: 100%;
+    overflow-x: hidden;
+    margin-top: 20px;
+  }
+  
+  .carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .carousel-item {
+    contain: content;
+    flex: 0 0 auto;
+    margin-right: 20px;
+    max-width: 20vh;
+    text-align: center;
+  }
+  
+  .carousel-image {
+    width: 100%;
+  }
+  
+  .carousel-title {
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  /* Styles pour le carrousel avec défilement horizontal */
+  @media (max-width: 768px) {
+    .carousel-inner {
+      flex-wrap: nowrap;
+    }
+  }

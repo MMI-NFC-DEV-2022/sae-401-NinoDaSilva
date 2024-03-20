@@ -10,7 +10,7 @@ const router = useRouter()
 
 // Import data from film
 const { data:filmData, error } = await supabase.from('film')
-  .select('*, plateforme_film(*, plateforme(*)), support_film(*)')
+  .select('*, plateforme_film(*, plateforme(*)), support_film(*), film_genre(*, genre(*))')
   .eq('id', route.params.id)
   .single()
 
@@ -24,6 +24,14 @@ if (error) {
     <div class="film_presentation lg:px-[5vh] xl:px-[10vh]">
       <div class="pr-10 md:pl-10">
         <h2 class="font-semibold text-2xl sm:text-4xl">{{ filmData.titre_film }}</h2>
+        <div class="flex gap-1 mb-2">
+          <div v-for="(unGenre, index) in filmData.film_genre" class="flex gap-1 opacity-90">
+            <template v-if="index !== 0"> - </template>
+            <RouterLink to="/films/">
+              <div>{{ unGenre.genre.nom_genre }}</div>
+            </RouterLink>
+          </div>
+        </div>
         <p class="md:mt-3 max-w-[80vh] lg:text-lg">{{ filmData.synopsis_film }}</p>
         <div class="mt-3 md:mt-6">{{ filmData.date_sortie }}</div>
         <div class="flex items-center gap-1 mt-1 md:mt-2">
