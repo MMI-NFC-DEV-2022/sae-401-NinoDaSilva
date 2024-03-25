@@ -21,7 +21,7 @@ img {
       @apply duration-150 bg-transparent border-2 rounded-xl w-full py-2.5 px-6 max-sm:leading-tight focus:outline-orange focus:scale-[1.01] mt-1;
     }
     .bouton-main {
-      @apply bg-orange rounded-xl p-2 px-5 w-full text-md font-semibold duration-300 shadow-sm hover:shadow-md hover:scale-105 hover:bg-opacity-10 border-2 border-orange
+      @apply bg-orange rounded-xl flex mx-auto justify-center p-2 px-5 w-full max-w-[50vh] text-md font-semibold duration-300 shadow-sm hover:shadow-md hover:bg-opacity-10 border-2 border-orange hover:text-blanc;
     }
   }
 

@@ -59,12 +59,14 @@ if (error) {
         <div class="flex col-span-2 gap-5 mt-5">
           <div v-for="(unSupport, index) in filmData.support_film.slice(0, 2)">
             <RouterLink :to="`/supports/${unSupport.id}`">
-              <img :src="unSupport.image_support" class="" alt="Logo plateforme">
+              <img :src="unSupport.image_support" class="max-w-[300px] mx-auto"lt="Photo support">
               <div class="mt-2 text-center text-md">{{ unSupport.nom_support }}</div>
             </RouterLink>
           </div>
         </div>
-        <RouterLink :to="`/supports/tousSupport/${filmData.id}`"><button class="bouton-main mt-8 mb-2 text-noir">Voir toutes les versions</button></RouterLink>
+        <RouterLink :to="`/supports/tousSupport/${filmData.id}`">
+          <button class="bouton-main mt-8 mb-2 text-noir">Voir toutes les versions</button>
+        </RouterLink>
       </div>
     </div>
 
