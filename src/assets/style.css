@@ -39,6 +39,9 @@ img {
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
   }
+  .carousel-parent-slide::-webkit-scrollbar {
+    display: none;
+  }
   .carousel-slide {
     width: 100%;
     flex: 0 0 45%;
@@ -92,6 +95,7 @@ img {
   body::-webkit-scrollbar {
     display: none;
   }
+  /* */
   .link{
     @apply hover:text-orange duration-200 cursor-pointer;
   }
