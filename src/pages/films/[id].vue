@@ -78,10 +78,10 @@ if (error) {
       </div>
     </div>
 
-    <div class="bg-noir p-8 -mx-5 xl:-mx-20 mt-10">
+    <div class="grid bg-noir py-8 -mx-5 xl:-mx-20 mt-10 justify-center">
       <div class="mx-5 text-blanc">
-        <h2 class="text-2xl font-semibold">Supports</h2>
-        <div class="flex col-span-2 gap-5 mt-5">
+        <h2 class="text-2xl font-semibold md:text-3xl">Supports</h2>
+        <div class="flex col-span-2 gap-5 mt-5 sm:mt-10 sm:gap-10">
           <div v-for="(unSupport, index) in filmData.support_film.slice(0, 2)">
             <RouterLink :to="`/supports/${unSupport.id}`">
               <img :src="unSupport.image_support" class="max-w-[300px] mx-auto" lt="Photo support">
@@ -90,7 +90,7 @@ if (error) {
           </div>
         </div>
         <RouterLink :to="`/supports/tousSupport/${filmData.id}`">
-          <button class="bouton-main mt-8 mb-2 text-noir">Voir toutes les versions</button>
+          <button class="bouton-main mt-8 sm:mt-14 mb-2 text-noir">Voir toutes les versions</button>
         </RouterLink>
       </div>
     </div>
