@@ -20,7 +20,7 @@ import CritiqueCard from '@/components/CritiqueCard.vue';
       <div class="relative max-w-[1920px] mx-auto">
         <p class="text-2xl sm:text-4xl xl:text-5xl w-[30vh] sm:w-full max-w-[750px]">Rejoins la communauté dès maintenant !</p>
         <RouterLink to="/connexion">
-          <Arrow class="absolute bottom-0 right-10 w-10 h-10 md:w-16 md:h-16"/>
+          <Arrow class="absolute bottom-0 right-10 w-10 h-10 md:w-16 md:h-16 duration-300 hover:scale-110 hover:translate-x-5"/>
         </RouterLink>
       </div>
     </div>
