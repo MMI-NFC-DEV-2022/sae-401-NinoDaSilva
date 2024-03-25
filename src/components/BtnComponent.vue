@@ -1,8 +1,8 @@
 <script setup lang="ts">
-defineProps({
-    buttonText: String,
-    stateToggle: String
-})
+defineProps<{
+    buttonText: string,
+    stateToggle?: string
+}>()
 
 </script>   
 
