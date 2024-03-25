@@ -17,9 +17,12 @@ if (error) {
 
 <template>
     <div>
-        <h1>Support</h1>
-        <div class="flex col-span-2 gap-5">
-            <div v-for="unSupport in filmData.support_film">
+        <div class="font-bold text-xl leading-tight mb-10">
+            <h1>Support disponible pour le film</h1>
+            <h2>▸ {{ filmData.titre_film }}</h2>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-none sm:flex sm:flex-wrap sm:gap-10">
+            <div v-for="unSupport in filmData.support_film" class="max-sm:mx-auto max-sm:w-40 max-w-[300px]">
                 <RouterLink :to="`/supports/${unSupport.id}`">
                     <img :src="unSupport.image_support" class="" alt="Logo plateforme">
                     <div class="mt-2 text-center text-md">{{ unSupport.nom_support }}</div>
