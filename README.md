@@ -32,3 +32,5 @@
 #### [Portail administrateur](https://nema.nino-da-silva.fr/admin)
 - Redirection vers la page d'accueil si non connecté.
 ###### [Ajout d'un film](https://nema.nino-da-silva.fr/admin/addfilm)
+
+#### [Page 404](https://nema.nino-da-silva.fr/404)
