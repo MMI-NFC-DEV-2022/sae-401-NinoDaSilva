@@ -24,11 +24,11 @@ if (error) {
     <div class="film_presentation lg:px-[5vh] xl:px-[10vh]">
       <div class="pr-10 md:pl-10">
         <h2 class="font-semibold text-2xl sm:text-4xl">{{ filmData.titre_film }}</h2>
-        <div class="flex gap-1 mb-2">
-          <div v-for="(unGenre, index) in filmData.film_genre" class="flex gap-1 opacity-90">
-            <template v-if="index !== 0"> - </template>
+        <div class="flex flex-wrap gap-1 mb-2">
+          <div v-for="(unGenre, index) in filmData.film_genre" class="link gap-1 opacity-90">
             <RouterLink to="/films/">
-              <div>{{ unGenre.genre.nom_genre }}</div>
+                <template v-if="index !== 0"> - </template>
+                {{ unGenre.genre.nom_genre }}
             </RouterLink>
           </div>
         </div>

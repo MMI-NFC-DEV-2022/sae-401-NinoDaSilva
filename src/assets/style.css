@@ -86,6 +86,9 @@ img {
   body::-webkit-scrollbar {
     display: none;
   }
+  .link{
+    @apply hover:text-orange duration-200 cursor-pointer;
+  }
   @media (min-width: 768px) {
     .carousel-title {
       font-size: 24px;
