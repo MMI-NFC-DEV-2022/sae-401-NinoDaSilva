@@ -48,7 +48,7 @@ if (error) {
   <div>
     <div class="film_presentation lg:px-[5vh] xl:px-[10vh]">
       <div class="pr-10 md:pl-10">
-        <h2 id="date" class="font-semibold text-2xl sm:text-4xl">{{ dateFr }}</h2>
+        <h2 class="font-semibold text-2xl sm:text-4xl">{{ filmData.titre_film }}</h2>
         <div class="flex flex-wrap gap-1 mb-2">
           <div v-for="(unGenre, index) in filmData.film_genre" class="link gap-1 opacity-90">
             <RouterLink to="/films/">
@@ -58,7 +58,7 @@ if (error) {
           </div>
         </div>
         <p class="md:mt-3 max-w-[80vh] lg:text-lg">{{ filmData.synopsis_film }}</p>
-        <div class="mt-3 md:mt-6">{{ filmData.date_sortie }}</div>
+        <div id="date" class="mt-3 md:mt-6">{{ filmData.date_sortie }}</div>
         <div class="flex items-center gap-1 mt-1 md:mt-2">
           <clock class="w-4 h-4" />
           <span>{{ filmData.duree_film }}</span>
@@ -78,7 +78,7 @@ if (error) {
       </div>
     </div>
 
-    <div class="bg-noir py-8 -mx-5 mt-10">
+    <div class="bg-noir p-8 -mx-5 xl:-mx-20 mt-10">
       <div class="mx-5 text-blanc">
         <h2 class="text-2xl font-semibold">Supports</h2>
         <div class="flex col-span-2 gap-5 mt-5">
