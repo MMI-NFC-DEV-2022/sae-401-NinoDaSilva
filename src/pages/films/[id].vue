@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router'
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router'
 import { supabase } from '@/supabase'
 
 import clock from '@/components/icons/clock.vue';
 import AffichageCelebrite from '@/components/AffichageCelebrite.vue';
 
 const route = useRoute()
-const router = useRouter()
 
 // Import data from film
-const { data:filmData, error } = await supabase.from('film')
+const { data: filmData, error } = await supabase.from('film')
   .select('*, plateforme_film(*, plateforme(*)), support_film(*), film_genre(*, genre(*))')
   .eq('id', route.params.id)
   .single()
@@ -17,18 +17,43 @@ const { data:filmData, error } = await supabase.from('film')
 if (error) {
   console.error('Erreur lors du chargement des données :', error)
 }
+
+// const dateFr = ref('')
+
+// onMounted(() => {
+//   // Mise en forme d'un date d'un format : yyyy-mm-dd HH:mm:ss en format : dd/mm/yyyy à HH
+//   dateFr.value = dateConv(filmData.date_sortie);
+// })
+
+// //@ts-ignore
+// function dateConv(date) {
+//     // découpage de la date
+//     let d = date.split(' ');
+//     // Récupérer la partie jour, mois, année
+//     let dt = d[0].split('-');
+//     // let jour = dt[2];
+//     // let mois = dt[1];
+//     let annee = dt[0];
+//     // récuperer la partie H:mm:ss
+//     let ht = d[1].split(':');
+//     let pt = d[1].split(':');
+//     let zt = pt[2].split('-');
+//     // date en format français
+//     let dateMsg = zt[2] + "/" + zt[1] + "/" + annee + " à " + ht[0] + ":" + ht[1];
+//     return dateMsg;
+//   }
 </script>
 
 <template>
   <div>
     <div class="film_presentation lg:px-[5vh] xl:px-[10vh]">
       <div class="pr-10 md:pl-10">
-        <h2 class="font-semibold text-2xl sm:text-4xl">{{ filmData.titre_film }}</h2>
+        <h2 id="date" class="font-semibold text-2xl sm:text-4xl">{{ dateFr }}</h2>
         <div class="flex flex-wrap gap-1 mb-2">
           <div v-for="(unGenre, index) in filmData.film_genre" class="link gap-1 opacity-90">
             <RouterLink to="/films/">
-                <template v-if="index !== 0"> - </template>
-                {{ unGenre.genre.nom_genre }}
+              <template v-if="index !== 0"> - </template>
+              {{ unGenre.genre.nom_genre }}
             </RouterLink>
           </div>
         </div>
@@ -59,7 +84,7 @@ if (error) {
         <div class="flex col-span-2 gap-5 mt-5">
           <div v-for="(unSupport, index) in filmData.support_film.slice(0, 2)">
             <RouterLink :to="`/supports/${unSupport.id}`">
-              <img :src="unSupport.image_support" class="max-w-[300px] mx-auto"lt="Photo support">
+              <img :src="unSupport.image_support" class="max-w-[300px] mx-auto" lt="Photo support">
               <div class="mt-2 text-center text-md">{{ unSupport.nom_support }}</div>
             </RouterLink>
           </div>
@@ -81,6 +106,7 @@ if (error) {
   grid-template-columns: 3fr 1fr;
   justify-content: start;
 }
+
 @media (min-width: 768px) {
   .film_presentation {
     display: flex;
