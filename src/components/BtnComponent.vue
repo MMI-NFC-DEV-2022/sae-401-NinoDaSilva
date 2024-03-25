@@ -9,7 +9,7 @@ defineProps<{
 <template>
     <div class="text-center mt-5">
         <button type="submit" @click="!stateToggle"
-            class="py-2 px-10 sm:px-16 rounded-full shadow-md hover:scale-[1.02] duration-300">
+            class="py-2 px-10 sm:px-16 rounded-xl shadow-md hover:scale-[1.02] duration-300">
             {{ buttonText }}
         </button>
     </div>
