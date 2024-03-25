@@ -10,6 +10,13 @@ const loginMode = ref(true)
 
 const email = ref('')
 const password = ref('')
+const gitText = ref('')
+
+if(loginMode.value) {
+  gitText.value = 'Connexion'
+} else {
+  gitText.value = 'Inscription'
+}
 
 // Fonction de connexion
 const doLogin = async () => {
@@ -21,7 +28,18 @@ const doLogin = async () => {
     router.push('/portail')
   } catch (error) {
     alert('Une erreur est survenue lors de la connexion, vérifiez vos identifiants et réessayez.')
-    console.log(error)
+    // console.log(error)
+  }
+}
+const doLoginGitHub = async () => {
+  try {
+    await supabase.auth.signInWithOAuth({
+      provider: 'github'
+    })
+    router.push('/portail')
+  } catch (error) {
+    alert('Une erreur est survenue lors de la connexion avec GitHub')
+    // console.log(error)
   }
 }
 // Fonction de création de compte
@@ -34,7 +52,7 @@ const doCreateAccount = async () => {
     alert('Votre compte a été créé avec succès !')
     router.push('/portail')
   } catch (error) {
-    console.log(error)
+    // console.log(error)
   }
 }
 
@@ -65,8 +83,9 @@ if (user.value) {
       <!-- Se connecter -->
       <div v-if="loginMode">
         <div class="text-center mt-6">
-
-          <BtnComponent buttonText="Se connecter" stateToggle="doLogin" />
+          <div class="sm:flex justify-around">
+            <BtnComponent buttonText="Se connecter" stateToggle="doLogin" />
+          </div>
 
           <div class="text-center mt-6">
             <p class="mb-2 sm:mb-1">Vous n'avez pas de compte ?</p>
@@ -84,7 +103,10 @@ if (user.value) {
           </label>
         </div>
 
-        <BtnComponent buttonText="S'inscrire" stateToggle="doCreateAccount" />
+        <div class="sm:flex justify-around">
+          <BtnComponent buttonText="S'inscrire" stateToggle="doCreateAccount" />
+        </div>
+
 
         <div class="text-center mt-6">
           <p class="mb-2 sm:mb-1">Vous avez déjà un compte ?</p>
@@ -93,4 +115,7 @@ if (user.value) {
       </div>
     </div>
   </form>
+  <div class="text-center">
+    <button class="duration-300 hover:shadow-md hover:scale-105 font-semibold border p-2 rounded-lg px-3" @click="doLoginGitHub">{{gitText}} avec GitHub</button>
+    </div>
 </template>
