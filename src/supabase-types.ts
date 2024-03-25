@@ -12,14 +12,17 @@ export type Database = {
       collection: {
         Row: {
           id: number
+          image_collection: string | null
           nom_collection: string | null
         }
         Insert: {
           id?: number
+          image_collection?: string | null
           nom_collection?: string | null
         }
         Update: {
           id?: number
+          image_collection?: string | null
           nom_collection?: string | null
         }
         Relationships: []
@@ -143,29 +146,35 @@ export type Database = {
       }
       personne: {
         Row: {
+          bio_personne: string | null
           created_at: string
           date_naissance: string | null
           id: number
           nationalite_personne: string | null
           nom_personne: string | null
+          photo_personne: string | null
           sexe_personne: string | null
           ville_naissance: string | null
         }
         Insert: {
+          bio_personne?: string | null
           created_at?: string
           date_naissance?: string | null
           id?: number
           nationalite_personne?: string | null
           nom_personne?: string | null
+          photo_personne?: string | null
           sexe_personne?: string | null
           ville_naissance?: string | null
         }
         Update: {
+          bio_personne?: string | null
           created_at?: string
           date_naissance?: string | null
           id?: number
           nationalite_personne?: string | null
           nom_personne?: string | null
+          photo_personne?: string | null
           sexe_personne?: string | null
           ville_naissance?: string | null
         }
@@ -232,16 +241,19 @@ export type Database = {
         Row: {
           film: number | null
           id: number
+          lien_plateforme: string | null
           plateforme: number | null
         }
         Insert: {
           film?: number | null
           id?: number
+          lien_plateforme?: string | null
           plateforme?: number | null
         }
         Update: {
           film?: number | null
           id?: number
+          lien_plateforme?: string | null
           plateforme?: number | null
         }
         Relationships: [
@@ -257,6 +269,47 @@ export type Database = {
             columns: ["plateforme"]
             isOneToOne: false
             referencedRelation: "plateforme"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      support_film: {
+        Row: {
+          codec_support: string | null
+          film: number | null
+          id: number
+          image_support: string | null
+          nom_support: string | null
+          ratio_support: string | null
+          resolution_support: string | null
+          type_support: string | null
+        }
+        Insert: {
+          codec_support?: string | null
+          film?: number | null
+          id?: number
+          image_support?: string | null
+          nom_support?: string | null
+          ratio_support?: string | null
+          resolution_support?: string | null
+          type_support?: string | null
+        }
+        Update: {
+          codec_support?: string | null
+          film?: number | null
+          id?: number
+          image_support?: string | null
+          nom_support?: string | null
+          ratio_support?: string | null
+          resolution_support?: string | null
+          type_support?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "public_support_film_film_fkey"
+            columns: ["film"]
+            isOneToOne: false
+            referencedRelation: "film"
             referencedColumns: ["id"]
           },
         ]
