@@ -1,22 +1,22 @@
 <script setup lang="ts">
-// import { useRoute } from 'vue-router'
-// import { supabase } from '@/supabase'
+import { useRoute } from 'vue-router'
+import { supabase } from '@/supabase'
 
-// const route = useRoute()
+const route = useRoute()
 
-// // Import data from film
-// const { data:filmData, error } = await supabase.from('film')
-//   .select('*, plateforme_film(*, plateforme(*)), support_film(*)')
-//   .eq('id', route.params.id)
-//   .single()
+// Import data from film
+const { data:filmData, error } = await supabase.from('film')
+  .select('*, plateforme_film(*, plateforme(*)), support_film(*)')
+  .eq('id', route.params.id)
+  .single()
 
-// if (error) {
-//   console.error('Erreur lors du chargement des données :', error)
-// }
+if (error) {
+  console.error('Erreur lors du chargement des données :', error)
+}
 </script>
 
 <template>
-    <!-- <div>
+    <div>
         <h1>Support</h1>
         <div class="flex col-span-2 gap-5">
             <div v-for="unSupport in filmData.support_film">
@@ -26,5 +26,5 @@
                 </RouterLink>
             </div>
         </div>
-    </div> -->
+    </div>
 </template>

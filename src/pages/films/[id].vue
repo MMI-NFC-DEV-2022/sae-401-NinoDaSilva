@@ -64,7 +64,7 @@ if (error) {
             </RouterLink>
           </div>
         </div>
-        <button @click="router.push({ name: '/supports/tousSupport/:id', params: { id: route.params.id } })" class="bouton-main mt-8 mb-2 text-noir">Voir toutes les versions</button>
+        <RouterLink :to="`/supports/tousSupport/${filmData.id}`"><button class="bouton-main mt-8 mb-2 text-noir">Voir toutes les versions</button></RouterLink>
       </div>
     </div>
 
